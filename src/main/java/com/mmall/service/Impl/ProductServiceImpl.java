@@ -149,15 +149,22 @@ public class ProductServiceImpl implements IProductService{
         return productDetailVo;
     }
 
+    /**
+     * 查询商品详情并分页
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public ServerResponse<PageInfo> getProductList(int pageNum,int pageSize){
         //startpage
         PageHelper.startPage(pageNum,pageSize);
         //sql逻辑
         List<Product> productList = productMapper.selectProductList();
-        //pagehelper首位
+        //pagehelper收尾
         List<ProductListVo> productListVoList = Lists.newArrayList();
         for(Product productItem : productList){
             ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
         }
         PageInfo pageResult = new PageInfo(productList);
         pageResult.setList(productListVoList);
