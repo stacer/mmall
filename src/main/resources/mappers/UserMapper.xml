@@ -151,4 +151,66 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-</mapper>
+
+  <!--校验用户是否存在-->
+  <select id="checkUserName" resultType="int" parameterType="string">
+    SELECT COUNT(1)
+    FROM mmall_user
+    WHERE username = #{userName}
+  </select>
+
+  <select id="checkByEmail" resultType="int" parameterType="string">
+    SELECT count(1)
+    FROM mmall_user
+    WHERE email = #{email}
+  </select>
+
+  <!--用户登录，返回用户信息-->
+  <select id="selectLogin" resultMap="BaseResultMap" resultType="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM mmall_user
+    WHERE username = #{userName}
+    AND password = #{password}
+  </select>
+
+  <!--查询问题-->
+  <select id="selectQuestionByUsername" resultType="string" parameterType="string">
+    SELECT question
+    FROM mmall_user
+    WHERE username = #{username}
+  </select>
+
+  <!--校验答案-->
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    SELECT coutnt(1)
+    FROM mmall_user
+    WHERE username = #{username}
+    and question = #{question}
+    and answer = #{answer}
+  </select>
+
+  <!--更新密码-->
+  <update id="updatePasswordByUsername" parameterType="map">
+    UPDATE mmall_user
+    SET password = #{passwordNew},update_time = now()
+    WHERE username = #{username}
+  </update>
+
+  <!--校验用户和用户密码是否一致-->
+  <select id="checkPassword" resultType="int" parameterType="map">
+    SELECT count(1)
+    from mmall_user
+    WHERE password = #{password}
+    and id = #{userId}
+  </select>
+
+  <!--校验邮箱-->
+  <select id="checkEmailByUserId" parameterType="map" resultType="int">
+    SELECT count(1)
+    FROM mmall_user
+    WHERE email = #{email}
+    and id != #{userId}
+  </select>
+
+ </mapper>

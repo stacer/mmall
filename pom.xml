@@ -94,6 +94,12 @@
     <!--<scope>runtime</scope>-->
   </dependency>
 
+  <!-- logBeauty -->
+  <!--<dependency>
+    <groupId>com.github.gh351135612</groupId>
+    <artifactId>logger-sc</artifactId>
+    <version>1.1</version>
+  </dependency>-->
 
   <dependency>
     <groupId>ch.qos.logback</groupId>
@@ -245,6 +251,7 @@
     <artifactId>jedis</artifactId>
     <version>2.9.0</version>
   </dependency>
+
 </dependencies>
 
 
