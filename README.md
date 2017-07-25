@@ -19,4 +19,15 @@
 *   分类管理模块开发
     *   递归算法
 
+#   商品管理模块开发(前后台商品搜索)
+    *   pageHelper
+    *   枚举类中接口分组的开发思想
+    *   simditor富文本上传
+    *   springmvc文件上传
+    *   mybatis foreach
+    *   mybatis 动态拼接sql where的用法
+    *   ftp工具类
+    *   joda-time编写时间工具类
+    *   流读取properties配置文件
+    *   PO,VO的转换思想
     

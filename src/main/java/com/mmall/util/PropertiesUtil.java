@@ -17,11 +17,13 @@ public class PropertiesUtil {
 
     private static Properties props;
 
+    //静态代码块优于普通代码块优于构造代码块,静态代码块只执行一次
     static {
-        String fileName = "mmall.properties";
+        //当这个类被jvm加载的时候，会先执行这里的内容
+        String filename = "mmall.properties";
         props = new Properties();
         try {
-            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName),"UTF-8"));
+            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(filename),"UTF-8"));
         } catch (IOException e) {
             logger.error("配置文件读取异常",e);
         }
@@ -36,14 +38,11 @@ public class PropertiesUtil {
     }
 
     public static String getProperty(String key,String defaultValue){
-
         String value = props.getProperty(key.trim());
         if(StringUtils.isBlank(value)){
-            value = defaultValue;
+            return defaultValue;
         }
         return value.trim();
     }
-
-
 
 }
