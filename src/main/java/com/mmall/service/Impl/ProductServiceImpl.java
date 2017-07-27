@@ -212,7 +212,7 @@ public class ProductServiceImpl implements IProductService{
 
     /**
      * 前台系统获取上架的商品详情
-     * @param productId
+     * @param productIdd
      * @return
      */
     public ServerResponse<ProductDetailVo> getProductDetail(Integer productId){
