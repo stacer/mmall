@@ -36,4 +36,5 @@
 *   购物车模块开发
     *   **购物车VO对象的抽象封装**
     *   BigDecimal的使用(商业类用String类型的构造函数)
+    *   guava的spliter的使用
     
